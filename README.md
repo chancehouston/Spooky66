@@ -51,7 +51,7 @@ the Hackberry Mine murders, and Route 66's phantom hitchhikers.
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/yourusername/spooky66.git
+git clone https://github.com/chancehouston/spooky66.git
 cd spooky66
 
 # 2. Install dependencies
