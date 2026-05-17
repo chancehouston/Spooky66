@@ -1,0 +1,291 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VisitInfo from '../../components/VisitInfo.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const stories = await getCollection('stories');
+  return stories.map(story => ({
+    params: { slug: story.slug },
+    props: { story },
+  }));
+}
+
+const { story } = Astro.props;
+const { Content } = await story.render();
+
+const allStories = await getCollection('stories');
+const sorted = allStories.sort((a, b) => a.data.order - b.data.order);
+const idx    = sorted.findIndex(s => s.slug === story.slug);
+const prev   = idx > 0               ? sorted[idx - 1] : null;
+const next   = idx < sorted.length - 1 ? sorted[idx + 1] : null;
+
+const { title, town, order, heroImage, address, hours, admission, website, tags } = story.data;
+const orderLabel = order.toString().padStart(2, '0');
+---
+
+<BaseLayout
+  title={title}
+  description={story.data.excerpt}
+>
+
+  <!-- ── Hero Image ──────────────────────────────────────── -->
+  <div class="story-hero">
+    {heroImage
+      ? <img src={`/images/${heroImage}`} alt={title} class="hero-img" />
+      : (
+        <div class="hero-placeholder">
+          <span>{orderLabel}</span>
+        </div>
+      )
+    }
+    <div class="hero-overlay">
+      <p class="story-town">{town}</p>
+      <h1>{title}</h1>
+    </div>
+  </div>
+
+  <!-- ── Story Body ─────────────────────────────────────── -->
+  <div class="container story-layout">
+    <article class="story-content">
+      <div class="story-meta">
+        <span class="meta-badge">{orderLabel} of 13</span>
+        {tags.map(tag => <span class="meta-tag">{tag}</span>)}
+      </div>
+
+      <div class="prose">
+        <Content />
+      </div>
+
+      <VisitInfo
+        address={address}
+        hours={hours}
+        admission={admission}
+        website={website}
+      />
+    </article>
+
+    <!-- ── Prev / Next ──────────────────────────────────── -->
+    <nav class="story-nav" aria-label="Story navigation">
+      {prev && (
+        <a href={`/stories/${prev.slug}/`} class="nav-prev">
+          <span class="nav-label">Previous</span>
+          <span class="nav-title">{prev.data.title}</span>
+          <span class="nav-town">{prev.data.town}</span>
+        </a>
+      )}
+      <a href="/map/" class="nav-map">Back to Map</a>
+      {next && (
+        <a href={`/stories/${next.slug}/`} class="nav-next">
+          <span class="nav-label">Next</span>
+          <span class="nav-title">{next.data.title}</span>
+          <span class="nav-town">{next.data.town}</span>
+        </a>
+      )}
+    </nav>
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* ── Hero ── */
+  .story-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    overflow: hidden;
+    background: var(--color-bg-elevated);
+    min-height: 260px;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0d1117 0%, #1a1f2e 100%);
+  }
+  .hero-placeholder span {
+    font-family: var(--font-display);
+    font-size: 12rem;
+    color: var(--color-accent-amber);
+    opacity: 0.08;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--space-lg) var(--space-md) var(--space-md);
+    background: linear-gradient(transparent, rgba(10, 13, 20, 0.95));
+  }
+
+  .story-town {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent-green);
+    margin: 0 0 0.4rem;
+  }
+
+  .hero-overlay h1 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin: 0;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  }
+
+  /* ── Layout ── */
+  .story-layout {
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-xl);
+  }
+
+  .story-content { max-width: 720px; }
+
+  /* ── Meta ── */
+  .story-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .meta-badge {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    background: var(--color-accent-amber);
+    color: var(--color-bg);
+    padding: 3px 9px;
+    border-radius: 2px;
+  }
+
+  .meta-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--color-bg-surface);
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    padding: 3px 9px;
+    border-radius: 2px;
+  }
+
+  /* ── Prose ── */
+  .prose :global(h2) {
+    font-size: 1.5rem;
+    color: var(--color-accent-amber);
+    margin: var(--space-lg) 0 var(--space-sm);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .prose :global(h2:first-child) {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .prose :global(p) {
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: var(--color-text);
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    padding-left: 1.5rem;
+    margin: 0 0 var(--space-sm);
+  }
+
+  .prose :global(li) {
+    margin-bottom: 0.4rem;
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .prose :global(em) { color: var(--color-text-muted); }
+
+  .prose :global(strong) {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .prose :global(blockquote) {
+    border-left: 3px solid var(--color-accent-amber);
+    margin: var(--space-md) 0;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-bg-surface);
+    font-style: italic;
+    color: var(--color-text-muted);
+  }
+
+  /* ── Story Nav ── */
+  .story-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+    flex-wrap: wrap;
+  }
+
+  .nav-prev,
+  .nav-next {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-decoration: none;
+    flex: 1;
+    min-width: 160px;
+  }
+  .nav-next { text-align: right; }
+
+  .nav-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .nav-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    color: var(--color-accent-amber);
+    line-height: 1.2;
+  }
+  .nav-prev:hover .nav-title,
+  .nav-next:hover .nav-title { text-decoration: underline; }
+
+  .nav-town {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+
+  .nav-map {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    padding: 6px 14px;
+    border-radius: var(--radius);
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .nav-map:hover {
+    color: var(--color-accent-amber);
+    border-color: var(--color-accent-amber);
+    text-decoration: none;
+  }
+</style>

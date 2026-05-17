@@ -1,0 +1,44 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  mainClass?: string;
+}
+
+const {
+  title,
+  description = "100 Years of Ghost Stories from the Desert — Arizona's Haunted Route 66",
+  mainClass = '',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://spooky66.com');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Spooky Route 66</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Bunny Fonts: privacy-respecting, no tracking -->
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <link
+      href="https://fonts.bunny.net/css?family=bebas-neue:400|crimson-pro:400,400i,600,600i&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <Nav />
+    <main class={mainClass}>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

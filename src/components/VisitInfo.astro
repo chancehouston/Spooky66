@@ -1,0 +1,94 @@
+---
+interface Props {
+  address:   string;
+  hours:     string;
+  admission: string;
+  website?:  string;
+}
+
+const { address, hours, admission, website } = Astro.props;
+
+function isTBD(val: string) {
+  return val.toLowerCase().includes('tbd') || val.toLowerCase().includes('to be determined');
+}
+
+const displayWebsite = website?.replace(/^https?:\/\//, '');
+---
+
+<aside class="visit-info" aria-label="Visitor information">
+  <h3>Visit This Location</h3>
+  <dl>
+    <dt>Address</dt>
+    <dd class:list={{ tbd: isTBD(address) }}>{address}</dd>
+
+    <dt>Hours</dt>
+    <dd class:list={{ tbd: isTBD(hours) }}>{hours}</dd>
+
+    <dt>Admission</dt>
+    <dd class:list={{ tbd: isTBD(admission) }}>{admission}</dd>
+
+    {website && (
+      <>
+        <dt>Website</dt>
+        <dd>
+          <a href={website} target="_blank" rel="noopener noreferrer">
+            {displayWebsite}
+          </a>
+        </dd>
+      </>
+    )}
+  </dl>
+</aside>
+
+<style>
+  .visit-info {
+    border: 1px solid var(--color-accent-green);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    background: var(--color-bg-surface);
+    margin: var(--space-lg) 0;
+  }
+
+  .visit-info h3 {
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent-green);
+    margin: 0 0 var(--space-sm);
+  }
+
+  dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.5rem var(--space-md);
+    align-items: baseline;
+  }
+
+  dt {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  dd {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--color-text);
+  }
+
+  dd.tbd {
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+
+  @media (max-width: 480px) {
+    dl {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+    dt { margin-top: var(--space-sm); }
+    dt:first-child { margin-top: 0; }
+  }
+</style>

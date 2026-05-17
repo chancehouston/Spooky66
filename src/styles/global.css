@@ -1,0 +1,171 @@
+/* Bunny Fonts — privacy-respecting alternative to Google Fonts */
+@import url('https://fonts.bunny.net/css?family=bebas-neue:400|crimson-pro:400,400i,600,600i&display=swap');
+
+/* ── Design Tokens ─────────────────────────────────────────── */
+:root {
+  --color-bg:           #0a0d14;  /* deep blue-black night sky */
+  --color-bg-surface:   #12161f;  /* card / panel backgrounds */
+  --color-bg-elevated:  #1a1f2e;  /* hover states, dropdowns */
+  --color-accent-amber: #e8841a;  /* primary: amber/orange neon */
+  --color-accent-green: #4a6741;  /* secondary: faded Route 66 sign green */
+  --color-text:         #e8e0d0;  /* warm cream */
+  --color-text-muted:   #9a9080;  /* secondary / captions */
+  --color-red:          #8b1a1a;  /* spooky emphasis — use sparingly */
+  --color-border:       #2a2f3e;
+
+  --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --font-body:    'Crimson Pro', Georgia, serif;
+
+  --space-xs:  0.25rem;
+  --space-sm:  0.75rem;
+  --space-md:  1.5rem;
+  --space-lg:  3rem;
+  --space-xl:  6rem;
+
+  --container: 1100px;
+  --radius:    4px;
+  --nav-h:     60px;
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Typography ────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  color: var(--color-text);
+  margin: 0 0 var(--space-sm);
+}
+
+p { margin: 0 0 var(--space-sm); }
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: var(--color-accent-amber);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* ── Layout ────────────────────────────────────────────────── */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+main { min-height: calc(100vh - var(--nav-h) - 120px); }
+
+/* ── Buttons ───────────────────────────────────────────────── */
+.btn-primary,
+.btn-secondary,
+.btn-outline {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  padding: 0.6em 1.4em;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--color-accent-amber);
+  color: var(--color-bg);
+  border: 2px solid var(--color-accent-amber);
+}
+.btn-primary:hover {
+  background: #f59a30;
+  border-color: #f59a30;
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-accent-amber);
+  border: 2px solid var(--color-accent-amber);
+}
+.btn-secondary:hover {
+  background: var(--color-accent-amber);
+  color: var(--color-bg);
+  text-decoration: none;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-text-muted);
+  border: 2px solid var(--color-border);
+}
+.btn-outline:hover {
+  border-color: var(--color-accent-amber);
+  color: var(--color-accent-amber);
+  text-decoration: none;
+}
+
+/* ── Leaflet Popup Overrides ────────────────────────────────── */
+.leaflet-popup-content-wrapper {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-accent-amber);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  color: var(--color-text);
+}
+.leaflet-popup-tip { background: var(--color-bg-elevated); }
+.leaflet-popup-close-button { color: var(--color-text-muted) !important; }
+.leaflet-popup-close-button:hover { color: var(--color-accent-amber) !important; }
+
+.leaflet-popup-content {
+  margin: 14px 18px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+.leaflet-popup-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  color: var(--color-accent-amber);
+  margin: 0 0 2px;
+}
+.leaflet-popup-content .popup-town {
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-green);
+  margin: 0 0 10px;
+  font-style: normal;
+}
+.leaflet-popup-content p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin: 0 0 10px;
+  line-height: 1.5;
+}
+.leaflet-popup-content a {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  color: var(--color-accent-amber);
+}
+.leaflet-container { background: var(--color-bg); }
+.leaflet-control-attribution {
+  background: rgba(10, 13, 20, 0.8) !important;
+  color: var(--color-text-muted) !important;
+  font-size: 0.65rem;
+}
+.leaflet-control-attribution a { color: var(--color-text-muted) !important; }
