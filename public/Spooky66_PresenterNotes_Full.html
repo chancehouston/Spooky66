@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Presenter Notes — Haunted Route 66 | Phoenix Fan Fusion 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&family=Special+Elite&display=swap');
+
+  :root {
+    --rust:       #8B4513;
+    --terra:      #D2691E;
+    --wood:       #5D4E37;
+    --sand:       #E8DCC4;
+    --sage:       #C4B5A0;
+    --ink:        #2A1F14;
+    --cream:      #F5EFE0;
+    --accent:     #A0522D;
+    --muted:      #7A6A58;
+    --highlight:  #C8813A;
+    --rule:       #C4B5A0;
+    --note-bg:    #EFE6D0;
+    --prompt-bg:  #DDD0BB;
+
+    --slide-title-bg:   #3D2B1A;
+    --intro-bg:         #4A3322;
+    --section-bg:       #5C3D20;
+    --highlight-bg:     #4D3618;
+    --story-bg:         #2E1E10;
+    --closing-bg:       #3D2B1A;
+    --debe-bg:          #4A3826;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--sand);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ─────────────────────────────────────── */
+  .doc-header {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 2.5rem 2rem 2rem;
+    text-align: center;
+    border-bottom: 4px solid var(--highlight);
+  }
+  .doc-header h1 {
+    font-family: 'Special Elite', serif;
+    font-size: 2rem;
+    letter-spacing: 0.06em;
+    color: var(--highlight);
+    margin-bottom: 0.3rem;
+  }
+  .doc-header .sub {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--sage);
+    margin-bottom: 1.2rem;
+  }
+  .doc-header .legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 2rem;
+    font-size: 0.78rem;
+    color: var(--sage);
+    letter-spacing: 0.04em;
+    margin-top: 0.8rem;
+  }
+  .legend-item { display: flex; align-items: center; gap: 0.4rem; }
+  .legend-dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  }
+
+  /* ── SLIDE BLOCK ─────────────────────────────────── */
+  .slide {
+    max-width: 860px;
+    margin: 2rem auto;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  }
+
+  /* ── SLIDE HEADER BANDS ──────────────────────────── */
+  .slide-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.9rem 1.2rem;
+    color: var(--cream);
+  }
+  .slide-num {
+    font-family: 'Special Elite', serif;
+    font-size: 1.6rem;
+    line-height: 1;
+    opacity: 0.6;
+    flex-shrink: 0;
+    min-width: 2rem;
+    padding-top: 2px;
+  }
+  .slide-meta { flex: 1; }
+  .slide-type-tag {
+    display: inline-block;
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 1px 7px;
+    border-radius: 2px;
+    margin-bottom: 0.25rem;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 300;
+  }
+  .slide-header h2 {
+    font-family: 'Special Elite', serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    line-height: 1.3;
+  }
+  .slide-header .location {
+    font-style: italic;
+    font-size: 0.8rem;
+    opacity: 0.75;
+    margin-top: 2px;
+  }
+  .slide-header .timing {
+    font-size: 0.72rem;
+    opacity: 0.65;
+    flex-shrink: 0;
+    text-align: right;
+    padding-top: 4px;
+  }
+
+  /* type-specific header colors */
+  .type-title    .slide-header { background: var(--slide-title-bg); }
+  .type-intro    .slide-header { background: var(--intro-bg); }
+  .type-debe     .slide-header { background: var(--debe-bg); }
+  .type-section  .slide-header { background: var(--section-bg); }
+  .type-travel   .slide-header { background: var(--highlight-bg); }
+  .type-story    .slide-header { background: var(--story-bg); }
+  .type-closing  .slide-header { background: var(--closing-bg); }
+
+  /* type-specific tag colors */
+  .type-title    .slide-type-tag { background: rgba(255,255,255,0.12); }
+  .type-intro    .slide-type-tag { background: rgba(255,255,255,0.12); }
+  .type-debe     .slide-type-tag { background: rgba(255,255,255,0.12); }
+  .type-section  .slide-type-tag { background: rgba(200,129,58,0.35); color: #f8ddb0; }
+  .type-travel   .slide-type-tag { background: rgba(200,129,58,0.25); color: #f0d4a8; }
+  .type-story    .slide-type-tag { background: rgba(255,255,255,0.10); }
+  .type-closing  .slide-type-tag { background: rgba(255,255,255,0.12); }
+
+  /* ── SLIDE BODY ──────────────────────────────────── */
+  .slide-body {
+    background: var(--cream);
+    padding: 1.4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  /* ── NOTE SECTIONS ───────────────────────────────── */
+  .note-section {
+    background: var(--note-bg);
+    border-left: 3px solid var(--rust);
+    border-radius: 0 3px 3px 0;
+    padding: 0.75rem 1rem;
+  }
+  .note-section h3 {
+    font-family: 'Special Elite', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.5rem;
+  }
+  .note-section p { font-size: 0.88rem; color: var(--ink); margin-bottom: 0.5rem; }
+  .note-section p:last-child { margin-bottom: 0; }
+  .note-section ul { padding-left: 1.1rem; }
+  .note-section ul li { font-size: 0.88rem; margin-bottom: 0.35rem; color: var(--ink); }
+
+  /* ── DISCUSSION PROMPTS ──────────────────────────── */
+  .prompt-box {
+    background: var(--prompt-bg);
+    border: 1px dashed var(--accent);
+    border-radius: 3px;
+    padding: 0.75rem 1rem;
+  }
+  .prompt-box h3 {
+    font-family: 'Special Elite', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.55rem;
+  }
+  .prompt-box ol { padding-left: 1.2rem; }
+  .prompt-box ol li { font-size: 0.88rem; margin-bottom: 0.4rem; color: var(--ink); }
+  .prompt-box .prompt-note {
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+
+  /* ── TRANSITION CUE ──────────────────────────────── */
+  .transition-cue {
+    background: #D9C9B3;
+    border-radius: 3px;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.82rem;
+    color: var(--wood);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .transition-cue .arrow { font-size: 1rem; flex-shrink: 0; }
+
+  /* ── TALKING POINTS ──────────────────────────────── */
+  .talking-points {
+    background: var(--note-bg);
+    border-left: 3px solid var(--highlight);
+    border-radius: 0 3px 3px 0;
+    padding: 0.75rem 1rem;
+  }
+  .talking-points h3 {
+    font-family: 'Special Elite', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--highlight);
+    margin-bottom: 0.5rem;
+  }
+  .talking-points ul { padding-left: 1.1rem; }
+  .talking-points ul li { font-size: 0.88rem; margin-bottom: 0.35rem; color: var(--ink); }
+
+  /* ── KEY FACTS ───────────────────────────────────── */
+  .key-facts {
+    background: var(--note-bg);
+    border-left: 3px solid var(--muted);
+    border-radius: 0 3px 3px 0;
+    padding: 0.75rem 1rem;
+  }
+  .key-facts h3 {
+    font-family: 'Special Elite', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .key-facts ul { padding-left: 1.1rem; }
+  .key-facts ul li { font-size: 0.88rem; margin-bottom: 0.35rem; color: var(--ink); }
+
+  /* ── DEBE FLAG ───────────────────────────────────── */
+  .debe-flag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #C4906A;
+    color: #fff;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-family: 'Special Elite', serif;
+  }
+
+  /* ── TOC ─────────────────────────────────────────── */
+  .toc {
+    max-width: 860px;
+    margin: 0 auto 0.5rem;
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 1.2rem 1.5rem;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+  }
+  .toc h2 {
+    font-family: 'Special Elite', serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.8rem;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.25rem 1.5rem;
+  }
+  .toc-grid a {
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-decoration: none;
+    display: flex;
+    gap: 0.4rem;
+  }
+  .toc-grid a:hover { color: var(--rust); text-decoration: underline; }
+  .toc-grid a .toc-num { opacity: 0.5; min-width: 1.5rem; }
+
+  /* ── DIVIDER ─────────────────────────────────────── */
+  .section-divider {
+    max-width: 860px;
+    margin: 2.5rem auto 0;
+    border: none;
+    border-top: 2px solid var(--rust);
+    opacity: 0.35;
+  }
+  .section-label {
+    max-width: 860px;
+    margin: 0.5rem auto 0.5rem;
+    font-family: 'Special Elite', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rust);
+    padding-left: 0.2rem;
+  }
+
+  /* ── FOOTER ──────────────────────────────────────── */
+  .doc-footer {
+    max-width: 860px;
+    margin: 2.5rem auto 3rem;
+    text-align: center;
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  @media print {
+    body { background: #fff; }
+    .slide { box-shadow: none; border: 1px solid #ccc; margin: 1rem 0; }
+    .doc-header, .slide-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .note-section, .prompt-box, .talking-points, .key-facts, .transition-cue { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .slide { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ DOC HEADER ══════════════════════════════════════════════ -->
+<div class="doc-header">
+  <h1>PRESENTER NOTES</h1>
+  <div class="sub">Haunted Route 66: Arizona's Mother Road &nbsp;·&nbsp; Phoenix Fan Fusion 2026</div>
+  <div style="font-size:0.78rem;color:var(--sage);font-style:italic;">23 slides &nbsp;·&nbsp; 60-minute format &nbsp;·&nbsp; 3 panelists + Debe Branning (special guest)</div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#5C3D20;"></div> Section Header — open panel discussion</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#4D3618;"></div> Travel Highlights — open panel discussion</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#2E1E10;"></div> Story Slides — 3–4 min each</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#4A3826;"></div> Debe Feature</div>
+  </div>
+</div>
+
+<!-- ══ TABLE OF CONTENTS ═══════════════════════════════════════ -->
+<div class="toc" style="margin-top:1.5rem;">
+  <h2>Quick Navigation</h2>
+  <div class="toc-grid">
+    <a href="#s1"><span class="toc-num">01</span> Title Slide</a>
+    <a href="#s2"><span class="toc-num">02</span> Introduction: Arizona's Route 66</a>
+    <a href="#s2b"><span class="toc-num">02b</span> Debe's Book Slide</a>
+    <a href="#s3"><span class="toc-num">03</span> Section Header: Eastern High Desert</a>
+    <a href="#s4"><span class="toc-num">04</span> Travel Highlights: Eastern High Desert</a>
+    <a href="#s5"><span class="toc-num">05</span> Story 1: Curse of the Petrified Forest</a>
+    <a href="#s6"><span class="toc-num">06</span> Story 2: George Smiley's Ghost</a>
+    <a href="#s7"><span class="toc-num">07</span> Story 3: La Posada's Mysterious Guests</a>
+    <a href="#s8"><span class="toc-num">08</span> Section Header: Mountain &amp; Pine Region</a>
+    <a href="#s9"><span class="toc-num">09</span> Travel Highlights: Mountain &amp; Pine Region</a>
+    <a href="#s10"><span class="toc-num">10</span> Story 4: Apache Death Cave &amp; Two Guns</a>
+    <a href="#s11"><span class="toc-num">11</span> Story 5: Hotel Monte Vista Celebrity Ghosts</a>
+    <a href="#s12"><span class="toc-num">12</span> Story 6: Weatherford Hotel Honeymooners</a>
+    <a href="#s13"><span class="toc-num">13</span> Story 7: Don and Thorna's Museum Club</a>
+    <a href="#s14"><span class="toc-num">14</span> Section Header: The Western Wilds</a>
+    <a href="#s15"><span class="toc-num">15</span> Travel Highlights: The Western Wilds</a>
+    <a href="#s16"><span class="toc-num">16</span> Story 8: Red Garter Inn's Murdered Madam</a>
+    <a href="#s17"><span class="toc-num">17</span> Story 9: Grand Canyon Caverns</a>
+    <a href="#s18"><span class="toc-num">18</span> Story 10: Hotel Brunswick's Love Triangle</a>
+    <a href="#s19"><span class="toc-num">19</span> Story 11: Oatman Hotel's Hollywood Ghosts</a>
+    <a href="#s20"><span class="toc-num">20</span> Story 12: The Hackberry Mine Murders</a>
+    <a href="#s21"><span class="toc-num">21</span> Story 13: Phantom Hitchhikers</a>
+    <a href="#s22"><span class="toc-num">22</span> Closing: The Road Never Ends</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     OPENING
+══════════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<div class="section-label">Opening</div>
+
+<!-- SLIDE 1 -->
+<div class="slide type-title" id="s1">
+  <div class="slide-header">
+    <div class="slide-num">01</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Title Slide</div>
+      <h2>HAUNTED ROUTE 66 — Arizona's Mother Road</h2>
+    </div>
+    <div class="timing">~2 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="note-section">
+      <h3>Opening Context</h3>
+      <p>This is your landing slide — it sets tone before anyone says a word. Let it breathe for a moment before you begin. The audience is still settling in.</p>
+    </div>
+    <div class="talking-points">
+      <h3>Talking Points</h3>
+      <ul>
+        <li>Welcome the audience warmly — this is a fan con, keep the energy high and approachable.</li>
+        <li>Brief panel introductions: each panelist says their name and one sentence about their connection to Route 66 or paranormal interest. Keep it snappy — save the deeper intros for after Debe's slide.</li>
+        <li>Frame the session: "We're going to drive the entire Arizona stretch of Route 66 tonight — east to west — in three acts. Every stop has a story. Some of those stories involve people who never left."</li>
+        <li>Acknowledge the 60-minute format — you'll move through 13 ghost stories, but the panel is here to discuss, not just recite. Audience Q&amp;A at the end.</li>
+      </ul>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to the Introduction slide once the panel is introduced and the room is warmed up.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide type-intro" id="s2">
+  <div class="slide-header">
+    <div class="slide-num">02</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Introduction</div>
+      <h2>Arizona's Route 66</h2>
+    </div>
+    <div class="timing">~3 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="talking-points">
+      <h3>Talking Points</h3>
+      <ul>
+        <li>Arizona's stretch is over 380 miles — the longest contiguous surviving section of the original Mother Road.</li>
+        <li>Active 1926 to 1985: three full generations of Americans drove this road as the primary artery between Chicago and Los Angeles.</li>
+        <li>Runs from the red cliffs of Lupton at the New Mexico border to the Colorado River crossing at Topock — every landscape, every climate zone, every kind of desert.</li>
+        <li>Paranormal researchers have called it "America's Most Haunted Highway." Tonight you'll see why.</li>
+        <li>The frame for the whole session: "We're driving it east to west, in three acts. Think of the Section Header slides as mile markers — that's where we pause, get our bearings, and talk about the road itself before the stories start."</li>
+      </ul>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Debe's book slide.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 2b — DEBE'S BOOK -->
+<div class="slide type-debe" id="s2b">
+  <div class="slide-header">
+    <div class="slide-num">02b</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Special Guest Feature</div>
+      <h2>Arizona's Haunted Route 66 — Debe Branning</h2>
+    </div>
+    <div class="timing">~3 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="note-section">
+      <h3>Context</h3>
+      <p>This is the right moment for a full introduction of Debe as a special guest — the book slide gives a natural visual anchor. Hand the floor to Debe or introduce her directly, whichever works best in the moment.</p>
+    </div>
+    <div class="talking-points">
+      <h3>Talking Points</h3>
+      <ul>
+        <li>Introduce Debe Branning: paranormal investigator, author, and the person who has literally walked every mile of haunted Arizona Route 66 and documented it.</li>
+        <li><em>Arizona's Haunted Route 66</em> is the foundational text for tonight's presentation — several of our stories come directly from Debe's fieldwork and investigations.</li>
+        <li>Debe can speak briefly to the book: what drove her to document the paranormal history of the road, how many locations she's investigated, what surprised her most.</li>
+        <li>Frame Debe's role tonight: she'll be adding investigator perspective throughout — where the panel presents the stories, Debe can speak to what she actually experienced in the field.</li>
+        <li>If Debe has copies of the book available: mention it now. Audience can grab one after the panel.</li>
+      </ul>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Act One — the Eastern High Desert section header. Cue: "Alright — let's hit the road. We're starting in the east, at the New Mexico border."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     ACT ONE — EASTERN HIGH DESERT
+══════════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<div class="section-label">Act One — The Eastern High Desert</div>
+
+<!-- SLIDE 3 -->
+<div class="slide type-section" id="s3">
+  <div class="slide-header">
+    <div class="slide-num">03</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Section Header — Open Discussion</div>
+      <h2>THE EASTERN HIGH DESERT</h2>
+      <div class="location">Lupton to Winslow</div>
+    </div>
+    <div class="timing">~4–5 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="note-section">
+      <h3>Background Context</h3>
+      <p>This stretch enters Arizona at the Lupton cliffs — dramatic red rock formations that signal you've crossed into something ancient. The road crosses the Navajo Nation and Hopi lands before passing through the Painted Desert and Petrified Forest and arriving at Holbrook, then Winslow. This is high desert: 5,000–6,000 feet elevation, vast, open, and geologically staggering.</p>
+      <p>The towns here — Lupton, Sanders, Holbrook, Joseph City, Winslow — were quintessential Route 66 service towns. Holbrook in particular had a lawless, violent reputation in the cattle-drive era. The area is rich with Native American history, much of it painful; keep that respect in the room.</p>
+    </div>
+    <div class="talking-points">
+      <h3>Talking Points / Panel Setup</h3>
+      <ul>
+        <li>Point out the road on the slide: east to west, Lupton to Winslow, roughly 120 miles.</li>
+        <li>The landscape itself feels haunted — Painted Desert, ancient petrified wood, the Navajo Nation. The paranormal stories here are almost inseparable from the land itself.</li>
+        <li>Holbrook was one of the most violent towns in Arizona during the cattle era — "too tough for women and churches" is a real quote. That history seeps into the ghost stories here.</li>
+        <li>Open the floor — invite panelists to share any personal experiences, memories, or road trip stories from this stretch before the formal stories begin.</li>
+      </ul>
+    </div>
+    <div class="prompt-box">
+      <h3>Discussion Prompts — Open Panel</h3>
+      <ol>
+        <li>Has anyone on the panel driven this stretch? What stood out — visually, atmospherically?</li>
+        <li>The Painted Desert and Petrified Forest are among the most visually surreal landscapes in the American Southwest. Does the landscape itself feel like it's holding something?</li>
+        <li>This stretch overlaps significantly with Navajo and Hopi lands. How does that cultural history shape the paranormal character of the area?</li>
+        <li>Holbrook's violent past is well-documented. Does a town's history of violence leave a residue — or is that just a good ghost story hook?</li>
+      </ol>
+      <div class="prompt-note">Let discussion breathe naturally. Transition to Travel Highlights when energy is good or after 3–4 minutes.</div>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Travel Highlights. Cue: "Before we get to the spooky stuff — let's talk about why you'd actually want to stop here."</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide type-travel" id="s4">
+  <div class="slide-header">
+    <div class="slide-num">04</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Travel Highlights — Open Discussion</div>
+      <h2>Stops &amp; Sights: Eastern High Desert</h2>
+    </div>
+    <div class="timing">~4–5 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="note-section">
+      <h3>Highlights on Slide</h3>
+      <ul>
+        <li><strong>Petrified Forest National Park</strong> — only national park Route 66 passes through directly</li>
+        <li><strong>Wigwam Motel, Holbrook</strong> — sleep in a concrete tipi; mid-century kitsch at its best</li>
+        <li><strong>Bucket of Blood Saloon, Holbrook</strong> — named for an 1886 gunfight; building still stands on Bucket of Blood Street</li>
+        <li><strong>Standin' on the Corner Park, Winslow</strong> — "Take It Easy" was born here; 100,000 visitors a year</li>
+        <li><strong>Jack Rabbit Trading Post, Joseph City</strong> — since 1949, the "HERE IT IS!" jackrabbit billboard is a Route 66 icon</li>
+      </ul>
+    </div>
+    <div class="talking-points">
+      <h3>Talking Points / Panel Setup</h3>
+      <ul>
+        <li>Walk through the highlights briefly — these are the fun, nostalgic stops that make Route 66 worth driving even before you get to the ghost stories.</li>
+        <li>The Bucket of Blood Saloon is worth extra time: it's both a fun roadside curiosity and a real piece of frontier violence history that feeds directly into the George Smiley story coming up next.</li>
+        <li>Standin' on the Corner: the Eagles connection is a genuine piece of American music history. Jackson Browne's car literally broke down in Winslow.</li>
+        <li>The Petrified Forest is unusual — it will come up in the very next story. You can tease that now: "And yes — there's a reason we're starting with the Petrified Forest. It has a reputation."</li>
+      </ul>
+    </div>
+    <div class="prompt-box">
+      <h3>Discussion Prompts — Open Panel</h3>
+      <ol>
+        <li>Has anyone visited any of these stops? The Wigwam Motel, the corner in Winslow, the Petrified Forest?</li>
+        <li>The Bucket of Blood Saloon name is almost too on-the-nose for a Route 66 ghost story. Does that kind of place feel different when you're standing in front of it?</li>
+        <li>Route 66 kitsch — the jackrabbits, the wigwam rooms, the roadside shields — is beloved but also a little eerie in its abandonment. Why do we find decayed Americana atmospheric?</li>
+      </ol>
+      <div class="prompt-note">Keep it light and conversational — this is the "fun" slide before the mood shifts.</div>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Story 1. Cue: "Alright — 225 million years of history, and the park is still collecting debts from people who thought they could take a piece of it home."</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide type-story" id="s5">
+  <div class="slide-header">
+    <div class="slide-num">05</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Story 1</div>
+      <h2>The Curse of the Petrified Forest</h2>
+      <div class="location">Petrified Forest National Park</div>
+    </div>
+    <div class="timing">~3–4 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="key-facts">
+      <h3>Key Facts</h3>
+      <ul>
+        <li>225-million-year-old fossilized trees; the park receives 1,200+ "conscience letters" from people who stole rocks</li>
+        <li>Reported consequences: divorces, job loss, car accidents, illness, and death</li>
+        <li>Navajo tradition: petrified wood is "Yei-bits-in" — the sacred bones of Yei-tso, the greatest of the alien gods</li>
+        <li>After Netflix's <em>Dead to Me</em> referenced the curse in 2019, 90 letters arrived in just seven months</li>
+        <li>One returned rock came with a note: the sender said their life had been destroyed since they returned home</li>
+      </ul>
+    </div>
+    <div class="talking-points">
+      <h3>Narrative Talking Points</h3>
+      <ul>
+        <li>Open with the scale: these are trees that died before dinosaurs. They lay in the ground for 225 million years before the road cut through them.</li>
+        <li>The "conscience letters" are a remarkable phenomenon — the park has an entire display of returned rocks with notes. It's been going on for decades. This isn't folklore — it's documented, ongoing, and growing.</li>
+        <li>The Navajo framing adds real weight: this isn't just a "don't steal from the park" story — the land itself is considered sacred ground and the bones of a deity. Removing the wood isn't theft; it's desecration.</li>
+        <li>The <em>Dead to Me</em> Netflix effect is a great hook for a convention audience — mainstream pop culture touched this story and the letters spiked immediately.</li>
+        <li><span class="debe-flag">✦ Debe</span> — if Debe has investigated the park or has any personal context on the Navajo tradition around the petrified wood, invite her in here.</li>
+      </ul>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Story 2. Cue: "Down the road in Holbrook, the violence wasn't supernatural — it was very human. But it left something behind anyway."</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide type-story" id="s6">
+  <div class="slide-header">
+    <div class="slide-num">06</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Story 2</div>
+      <h2>George Smiley's Ghost</h2>
+      <div class="location">Historic Navajo County Courthouse, Holbrook (built 1899)</div>
+    </div>
+    <div class="timing">~3–4 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="key-facts">
+      <h3>Key Facts</h3>
+      <ul>
+        <li>Holbrook, 1890s: 26 shooting deaths in 1886 alone in a town of 250 people</li>
+        <li>Convicted murderer George Smiley sentenced to hang December 8, 1899</li>
+        <li>Sheriff Wattron sent printed formal "invitations" to the hanging — as a dark joke; a reporter got one and the story went worldwide</li>
+        <li>President McKinley personally intervened and forced a postponement</li>
+        <li>Smiley finally hanged January 8, 1900 — humiliated and infuriated by the circus made of his death</li>
+        <li>Haunting: cold spots, disembodied footsteps, dread in the basement cells, a shadowy figure still pacing</li>
+      </ul>
+    </div>
+    <div class="talking-points">
+      <h3>Narrative Talking Points</h3>
+      <ul>
+        <li>Lead with the town's context — Holbrook was genuinely one of the most violent places in territorial Arizona. This wasn't a single bad incident; it was a culture of lethal lawlessness.</li>
+        <li>The invitation story is remarkable and darkly comic — a sitting president had to personally get involved because a sheriff's gallows joke went viral in 1899. Play that absurdity up briefly before the weight of the hanging lands.</li>
+        <li>Smiley's anger is the narrative engine of the haunting: he wasn't just executed — he was humiliated. His death became an international punchline. That's a lot of rage to leave behind in a basement cell.</li>
+        <li>The courthouse still stands. The basement jail is still there. If Debe or any panelist has been inside, this is a good moment to invite that.</li>
+      </ul>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Story 3. Cue: "We're moving west to Winslow — and a hotel so beautiful, some guests apparently decided to stay forever."</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide type-story" id="s7">
+  <div class="slide-header">
+    <div class="slide-num">07</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Story 3</div>
+      <h2>La Posada Hotel's Mysterious Guests</h2>
+      <div class="location">La Posada Hotel, Winslow (built 1929)</div>
+    </div>
+    <div class="timing">~3–4 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="key-facts">
+      <h3>Key Facts</h3>
+      <ul>
+        <li>Designed by Mary Jane Colter — considered the crown jewel of Fred Harvey's Harvey Houses</li>
+        <li>Colter incorporated hidden passages and secret spaces throughout the property</li>
+        <li>Closed 1957; sat abandoned for decades; lovingly restored in the 1990s and still operating</li>
+        <li><span class="debe-flag">✦ Debe</span> Debe's team investigated the property; they reported feeling watched and sensed "guests from the past" throughout</li>
+        <li>Phenomena: footsteps in empty hallways, guests feeling they are not alone in their rooms</li>
+        <li>The spirits seem benign — former guests who loved this place too much to leave</li>
+      </ul>
+    </div>
+    <div class="talking-points">
+      <h3>Narrative Talking Points</h3>
+      <ul>
+        <li>Mary Jane Colter is worth a sentence: one of the few prominent women architects of her era, and her work for the Harvey Houses defined the "Southwest style" that's still everywhere in the region.</li>
+        <li>The hidden passages angle is great — Colter may have accidentally designed the perfect haunted house by building a property full of spaces that weren't on any official floor plan.</li>
+        <li>The emotional core of this story is gentle: these aren't angry spirits. They're people who loved a beautiful place so much they never checked out. That resonates with anyone who's stayed somewhere extraordinary.</li>
+        <li><span class="debe-flag">✦ Debe</span> — Debe's team actually investigated this property. Invite her to describe the experience in her own words. This is one where firsthand investigator testimony is most valuable.</li>
+      </ul>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Section Header 2. Cue: "We leave the high desert now. The elevation climbs, the desert gives way to pine trees, and the road gets strange in new ways."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     ACT TWO — MOUNTAIN & PINE REGION
+══════════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<div class="section-label">Act Two — The Mountain &amp; Pine Region</div>
+
+<!-- SLIDE 8 -->
+<div class="slide type-section" id="s8">
+  <div class="slide-header">
+    <div class="slide-num">08</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Section Header — Open Discussion</div>
+      <h2>THE MOUNTAIN &amp; PINE REGION</h2>
+      <div class="location">Winslow to Williams</div>
+    </div>
+    <div class="timing">~4–5 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="note-section">
+      <h3>Background Context</h3>
+      <p>This is the most dramatic landscape shift on the entire Arizona stretch of Route 66. As you drive west out of Winslow, the road climbs steadily into the Colorado Plateau. By the time you reach Flagstaff at 7,000 feet, you're in the middle of the world's largest continuous ponderosa pine forest. The air is cooler, the light is different, the whole character of the road changes.</p>
+      <p>This stretch includes Two Guns — one of the most genuinely cursed places in Arizona history — and then Flagstaff, which punches well above its weight for paranormal activity despite being a thriving college town. Williams is the last stop: the final town bypassed by the interstate and one of the best-preserved Route 66 downtowns anywhere.</p>
+      <p>The towns: Meteor City, Two Guns, Winona (yes, that Winona), Flagstaff, Bellemont, Williams. The elevation range is roughly 4,800 to 7,000 feet — the highest point on Route 66 in Arizona.</p>
+    </div>
+    <div class="talking-points">
+      <h3>Talking Points / Panel Setup</h3>
+      <ul>
+        <li>Note the landscape shift on the slide — the color palette literally changes as you climb. This isn't just visual; the whole emotional character of the road shifts.</li>
+        <li>Flagstaff is a fascinating case: it's a lively, educated college town that also happens to sit at the intersection of some of the darkest history and most concentrated paranormal activity in the state.</li>
+        <li>Two Guns is one of the most disturbing places on the road — a genuine mass grave overlaid with 1920s tourist kitsch. If any panelist has been to the ruins, now is the time.</li>
+        <li>Williams is the sentimental favorite: the last town on Route 66 to be bypassed, and the one that fought hardest to preserve what the road meant.</li>
+      </ul>
+    </div>
+    <div class="prompt-box">
+      <h3>Discussion Prompts — Open Panel</h3>
+      <ol>
+        <li>The landscape change from desert to pine forest happens surprisingly fast on this drive. Has anyone experienced that shift? Does the mood of the road change with the altitude?</li>
+        <li>Flagstaff sits at the center of this section — it has Lowell Observatory, NAU, a thriving arts scene, and some of the most haunted buildings in Arizona. What is it about Flagstaff that seems to hold so many stories?</li>
+        <li>Two Guns is Route 66's darkest chapter — a tourist attraction literally built on a mass grave. How do we think about places like that? What's the right way to tell that story?</li>
+        <li>Williams was the last town to lose Route 66 to the interstate — 1984, with a ceremony and Bobby Troup playing the song live. What does it feel like to be the end of an era?</li>
+      </ol>
+      <div class="prompt-note">Two Guns will come up immediately in Story 4 — keep any panel discussion of it brief here to preserve the impact of the story itself.</div>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Travel Highlights. Cue: "Here's what you'd stop for on this stretch — before we get to what might stop you."</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide type-travel" id="s9">
+  <div class="slide-header">
+    <div class="slide-num">09</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Travel Highlights — Open Discussion</div>
+      <h2>Stops &amp; Sights: Mountain &amp; Pine Region</h2>
+    </div>
+    <div class="timing">~4–5 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="note-section">
+      <h3>Highlights on Slide</h3>
+      <ul>
+        <li><strong>Meteor Crater</strong> — 50,000 years old, nearly a mile wide, the best-preserved impact site on Earth; NASA trained Apollo astronauts here</li>
+        <li><strong>Lowell Observatory, Flagstaff</strong> — where Pluto was discovered in 1930; world's first International Dark Sky City</li>
+        <li><strong>Walnut Canyon National Monument</strong> — 800-year-old Sinagua cliff dwellings, accessible via trail</li>
+        <li><strong>Flagstaff</strong> — 7,000 feet, historic downtown, neon motels, world's largest ponderosa pine forest</li>
+        <li><strong>The Poozeum, Williams</strong> — Guinness record for world's largest collection of fossilized coprolites (yes, prehistoric poop)</li>
+        <li><strong>Williams — Gateway to the Grand Canyon</strong> — last Route 66 town bypassed; Grand Canyon Railway still runs</li>
+      </ul>
+    </div>
+    <div class="talking-points">
+      <h3>Talking Points / Panel Setup</h3>
+      <ul>
+        <li>The Poozeum is mandatory — play it for laughs. Route 66 has always embraced the gloriously weird, and a world-record poop museum in Williams is peak Mother Road energy.</li>
+        <li>Meteor Crater is genuinely staggering in person. Standing at the rim, the scale is almost impossible to process. Apollo training here is a great fact that surprises people.</li>
+        <li>Walnut Canyon is often overlooked — it's only a short drive from downtown Flagstaff but it gets far fewer visitors than it deserves. The cliff dwellings are remarkable.</li>
+        <li>The Grand Canyon Railway out of Williams is a bucket list ride — the steam train, the scenery, the history. Worth mentioning for anyone in the audience planning a road trip.</li>
+      </ul>
+    </div>
+    <div class="prompt-box">
+      <h3>Discussion Prompts — Open Panel</h3>
+      <ol>
+        <li>Meteor Crater and Lowell Observatory are both places where the scale of time becomes overwhelming — 50,000 years, 4.5 billion miles away. Do places like that feel different atmospherically? More or less haunted than a saloon?</li>
+        <li>Walnut Canyon's cliff dwellings are 800 years old. People lived, cooked, slept, and raised children in those rooms. Does that kind of intimate human history register differently than the broad sweep of frontier violence?</li>
+        <li>Anyone brave enough to admit they'd book the underground suite at Grand Canyon Caverns? (Tease the upcoming story — the caverns are coming up in Act 3.)</li>
+      </ol>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Story 4. Cue: "Between Winslow and Flagstaff, there's a ghost town at a place called Two Guns. And it is exactly as dark as it sounds."</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide type-story" id="s10">
+  <div class="slide-header">
+    <div class="slide-num">10</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Story 4</div>
+      <h2>Apache Death Cave &amp; Cursed Two Guns</h2>
+      <div class="location">Two Guns Ghost Town, Canyon Diablo (Exit 230)</div>
+    </div>
+    <div class="timing">~3–4 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="key-facts">
+      <h3>Key Facts</h3>
+      <ul>
+        <li>1878: 42 Apache warriors suffocated in a limestone cave by Navajo raiders who lit a fire at the entrance — the cave became a mass grave and sacred ground</li>
+        <li>1925: Harry "Two Guns" Miller built a tourist trap over the burial site — zoo, restaurant, guided cave tours, Apache skeletons displayed as attractions</li>
+        <li>The Curse: 1926 — Miller shot and killed his landlord (acquitted). 1929 — his store burned. 1930 — Miller fled. 1971 — a massive fire destroyed the entire town. Every subsequent owner faced disaster.</li>
+        <li>Today: moaning from the cave, shadowy figures in the ruins, rocks thrown by unseen hands at visitors</li>
+        <li>Miller's old lion habitat still stands — collapsed, graffitied, unsettling</li>
+      </ul>
+    </div>
+    <div class="talking-points">
+      <h3>Narrative Talking Points</h3>
+      <ul>
+        <li>The layers here are what make this story so heavy: a mass killing, then a man who built a carnival on top of sacred remains, then a curse that destroyed everyone who tried to profit from that desecration. The structure is almost Greek in its logic.</li>
+        <li>Be measured and respectful about the Apache deaths — this is a real tragedy involving real people, not just a spooky setup. Acknowledge the weight before moving to the exploitation that followed.</li>
+        <li>Miller's character is wild — he changed his name to "Two Guns" Miller, built a zoo in the desert, shot his business partner, and vanished into history. He's a Route 66 villain straight out of a tall tale.</li>
+        <li>The ruins are still accessible and actively visited — current phenomena (rocks thrown, moaning) are reported by modern visitors, not just historical accounts.</li>
+        <li><span class="debe-flag">✦ Debe</span> — Debe's book covers Two Guns. If she's investigated the ruins, invite her perspective on what the site feels like today.</li>
+      </ul>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Story 5. Cue: "We're in Flagstaff now. And in Flagstaff, even the fancy hotels come with their own cast of permanent residents."</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 11 -->
+<div class="slide type-story" id="s11">
+  <div class="slide-header">
+    <div class="slide-num">11</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Story 5</div>
+      <h2>Hotel Monte Vista's Celebrity Ghosts</h2>
+      <div class="location">Hotel Monte Vista, 100 N. San Francisco St., Flagstaff (opened 1927)</div>
+    </div>
+    <div class="timing">~3–4 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="key-facts">
+      <h3>Key Facts</h3>
+      <ul>
+        <li>Built with public funds; attracted John Wayne, Gary Cooper, Humphrey Bogart, and other Hollywood royalty filming in Monument Valley</li>
+        <li>The Phantom Bellboy: knocks on doors announcing "room service" — then vanishes. John Wayne himself reportedly encountered him.</li>
+        <li>Room 306: two prostitutes murdered here; their presence is still strongly felt</li>
+        <li>Room 305: a woman stares out the window — guests on the street below have seen her before being told the room was haunted</li>
+        <li>Room 309 (The Alan Ladd Room): his apparition has been seen walking through the closed door</li>
+        <li>Also: a bank robber who bled out in the lounge; a dancing couple; a shadow man; a crying infant; a rocking chair that moves on its own. Management encourages guests to attempt contact.</li>
+      </ul>
+    </div>
+    <div class="talking-points">
+      <h3>Narrative Talking Points</h3>
+      <ul>
+        <li>The Hollywood connection is great for a fan convention audience — these aren't just random historical figures. John Wayne, Humphrey Bogart, and Gary Cooper all walked these halls. And apparently at least one of the staff never left.</li>
+        <li>The Phantom Bellboy is the cleanest, most repeatable story here — keep it as your anchor. The John Wayne encounter gives it celebrity credibility.</li>
+        <li>Room 305 is particularly compelling: the woman in the window was seen by street-level guests before anyone told them about her. That's the kind of independent corroboration that's hard to dismiss.</li>
+        <li>The hotel's approach is worth noting: management actively encourages contact attempts and housekeeping documents encounters. This isn't a place trying to hide its reputation — it's leaning into it.</li>
+        <li>The sheer density of phenomena here — at least seven distinct reported entities — makes this one of the richest haunted buildings on the road.</li>
+      </ul>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Story 6. Cue: "A few blocks away, Flagstaff's oldest hotel has a different kind of haunting — this one is almost unbearably romantic."</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 12 -->
+<div class="slide type-story" id="s12">
+  <div class="slide-header">
+    <div class="slide-num">12</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Story 6</div>
+      <h2>Weatherford Hotel's Eternal Honeymooners</h2>
+      <div class="location">Weatherford Hotel, 23 N. Leroux St., Flagstaff (built 1897)</div>
+    </div>
+    <div class="timing">~3–4 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="key-facts">
+      <h3>Key Facts</h3>
+      <ul>
+        <li>Built by Texan John Weatherford after he fell in love with the mountains; the local paper called it "the finest hotel in the whole southwest"</li>
+        <li>Theodore Roosevelt and William Randolph Hearst both stayed here</li>
+        <li>A newlywed couple died under mysterious circumstances in the early 1900s — details lost to history</li>
+        <li>Haunting: romantic whispers, soft laughter, footsteps at night, glimpses of a couple in wedding attire</li>
+        <li>Seen on the famous wrap-around balcony, gazing at the San Francisco Peaks — replaying the best night of their lives</li>
+        <li>Flagstaff's free self-guided downtown ghost tour includes the Weatherford as its crown jewel</li>
+      </ul>
+    </div>
+    <div class="talking-points">
+      <h3>Narrative Talking Points</h3>
+      <ul>
+        <li>The emotional register here is entirely different from Two Guns or George Smiley — this is a love story. A sad one, but a love story. Play that contrast deliberately.</li>
+        <li>The wrap-around balcony with a view of the San Francisco Peaks is genuinely beautiful — the image of two figures in wedding clothes gazing out at the mountains is melancholy and lovely in equal measure.</li>
+        <li>The "whole hotel feels perpetually in 1897" detail is worth dwelling on — that's a different kind of haunting than apparitions or cold spots. It's an atmosphere, a feeling that time is wrong.</li>
+        <li>The mystery of the couple's deaths — details lost to history — actually makes this more powerful. There's no resolution, no explanation. Just the presence.</li>
+      </ul>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Story 7. Cue: "Still in Flagstaff, but the mood is about to shift. This next one is about love too — but it doesn't end romantically."</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 13 -->
+<div class="slide type-story" id="s13">
+  <div class="slide-header">
+    <div class="slide-num">13</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Story 7</div>
+      <h2>Don and Thorna's Museum Club</h2>
+      <div class="location">3404 E. Route 66, Flagstaff (built 1931)</div>
+    </div>
+    <div class="timing">~3–4 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="key-facts">
+      <h3>Key Facts</h3>
+      <ul>
+        <li>Originally Arizona's largest log cabin, built to house taxidermist Dean Eldredge's collection — the animals still watch from the walls</li>
+        <li>1963: Don and Thorna Scott bought it and turned it into a legendary honky-tonk; Willie Nelson, Wanda Jackson, and a 14-year-old Tanya Tucker played here</li>
+        <li>1973: Thorna fell down the stairs and never recovered</li>
+        <li>1975: Grief-stricken Don shot himself at the stone fireplace</li>
+        <li>Thorna's Ghost: appears at the bar at any hour, often mistaken for an actual bartender; described by staff as a "sweetheart." Once pinned a tenant down and told him "You should only fear the living."</li>
+        <li>Don's Ghost: darker, angrier — the fireplace sometimes lights itself; chairs rock; temperature drops</li>
+      </ul>
+    </div>
+    <div class="talking-points">
+      <h3>Narrative Talking Points</h3>
+      <ul>
+        <li>The two-ghost dynamic here is what makes this story so compelling: Thorna is warm, present, occasionally helpful. Don is dark, angry, still grieving at the place where he ended his life. They're the same love story told by two very different survivors of it.</li>
+        <li>The "You should only fear the living" line is extraordinary — it's threatening but also almost reassuring. The tenant didn't think so, but it's the kind of line that stays with you.</li>
+        <li>The taxidermied animals watching from the walls add genuine atmosphere: this is already an unsettling space even before the ghost stories. The eyes of mounted animals are eerie in a different way than human spirits.</li>
+        <li>The music history is real and worth noting: this honky-tonk was legitimately famous. Tanya Tucker was 14 when she played here. These were real people building something real — which makes the tragedy land harder.</li>
+        <li><span class="debe-flag">✦ Debe</span> — check in with Debe if she has any investigator experience at the Museum Club.</li>
+      </ul>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Section Header 3. Cue: "We leave Flagstaff and Williams behind now. The road drops back into the desert — and gets wilder."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     ACT THREE — THE WESTERN WILDS
+══════════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<div class="section-label">Act Three — The Western Wilds</div>
+
+<!-- SLIDE 14 -->
+<div class="slide type-section" id="s14">
+  <div class="slide-header">
+    <div class="slide-num">14</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Section Header — Open Discussion</div>
+      <h2>THE WESTERN WILDS</h2>
+      <div class="location">Seligman to Topock</div>
+    </div>
+    <div class="timing">~4–5 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="note-section">
+      <h3>Background Context</h3>
+      <p>This is the longest and most desolate stretch of Route 66 in Arizona — and arguably the most authentic. West of Seligman, I-40 sweeps far north and the old road runs on alone through terrain that barely changed in a century. Towns here are small and far apart: Ash Fork, Seligman, Peach Springs on the Hualapai Nation, Truxton, Valentine (population: 0), Hackberry, Kingman, and then the dramatic plunge down the Oatman Highway through the Black Mountains to the Colorado River.</p>
+      <p>Seligman is the spiritual heart of the Route 66 preservation movement — Angel Delgadillo's fight here after the 1978 bypass is the reason you can still drive the road today. The Hualapai Nation governs Peach Springs and Grand Canyon Caverns is on their land. Kingman is the largest city in this section and serves as a hub. Oatman is the road's final dramatic flourish before it hits the river and ends.</p>
+      <p>This section has the most diverse paranormal character of the three acts: underground spirits (Caverns), frontier murder (Hackberry), Hollywood glamour (Oatman), Victorian rivalry (Kingman), red-light history (Williams/Red Garter), and the road's most famous legend — the phantom hitchhikers who span the entire stretch.</p>
+    </div>
+    <div class="talking-points">
+      <h3>Talking Points / Panel Setup</h3>
+      <ul>
+        <li>Point out the scale on the slide: this stretch runs from Seligman to Topock — roughly 160 miles. Much of it has no interstate visible, no cell service, minimal services. It's the old road as it actually was.</li>
+        <li>Seligman deserves a moment: Angel Delgadillo is a genuine American hero. Without his advocacy, most of what we've talked about tonight would be under concrete.</li>
+        <li>The Oatman Highway through the Black Mountains is one of the most spectacular drives in the state — 191 switchbacks with thousand-foot drops. It's the road as experience, not just transportation.</li>
+        <li>Six stories in this act — the most of any section. Keep pacing in mind heading into the final run.</li>
+      </ul>
+    </div>
+    <div class="prompt-box">
+      <h3>Discussion Prompts — Open Panel</h3>
+      <ol>
+        <li>This is the longest uninterrupted stretch of old Route 66 — no interstate nearby. What does it feel like to drive road that functionally hasn't changed in 70 years? Does time feel different out there?</li>
+        <li>Seligman was nearly erased from the map. Angel Delgadillo started the preservation movement basically alone. What does it say about a place that someone fights that hard to save it?</li>
+        <li>The Oatman Highway is considered one of the most dangerous and most beautiful roads in Arizona. Has anyone driven it? What's the experience like coming out of the mountains and seeing the Colorado River?</li>
+        <li>This section is the home of the phantom hitchhiker legends — the final story in our set. What's the appeal of that specific archetype? Why do hitchhiker ghost stories persist across so many cultures?</li>
+      </ol>
+      <div class="prompt-note">The hitchhiker question is a light tease for the closing story — don't go too deep here.</div>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Travel Highlights. Cue: "Before the ghosts of the Western Wilds — here's why you'd make the drive in the first place."</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 15 -->
+<div class="slide type-travel" id="s15">
+  <div class="slide-header">
+    <div class="slide-num">15</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Travel Highlights — Open Discussion</div>
+      <h2>Stops &amp; Sights: The Western Wilds</h2>
+    </div>
+    <div class="timing">~4–5 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="note-section">
+      <h3>Highlights on Slide</h3>
+      <ul>
+        <li><strong>Seligman</strong> — birthplace of the Route 66 revival; Angel Delgadillo's barbershop; widely credited as the real-world inspiration for Pixar's <em>Cars</em> / Radiator Springs</li>
+        <li><strong>Grand Canyon Caverns, Peach Springs</strong> — largest dry caverns in the US, 21 stories underground; the underground Cavern Suite is the darkest, deepest motel room in the world</li>
+        <li><strong>Hackberry General Store</strong> — Route 66 nostalgia treasure chest; vintage neon, classic cars, decades of memorabilia</li>
+        <li><strong>Arizona Route 66 Museum, Kingman</strong> — full Mother Road history; Kingman is Andy Devine's hometown (Andy Devine Avenue)</li>
+        <li><strong>Oatman — The Living Ghost Town</strong> — once a boomtown of 10,000; 135 people remain; wild burros on Main Street; daily staged gunfights; 191 corkscrew turns on the Oatman Highway</li>
+      </ul>
+    </div>
+    <div class="talking-points">
+      <h3>Talking Points / Panel Setup</h3>
+      <ul>
+        <li>The <em>Cars</em> / Seligman connection is pure gold for a fan convention audience — Pixar modeled Radiator Springs on Seligman and the surrounding Route 66 towns. Angel Delgadillo's story is the emotional heart of what the film is actually about.</li>
+        <li>The Cavern Suite at Grand Canyon Caverns is a legitimately unique experience: 21 stories underground, complete darkness, total silence. That's either a dream or a nightmare depending on who you are. (And a setup for Story 9.)</li>
+        <li>Oatman's wild burros are descended from miners' pack animals turned loose when the mines closed — they've been living on the main street for generations. It's one of those details that's too good to be invented.</li>
+        <li>Andy Devine is genuinely underappreciated — he was one of the biggest western TV stars of the 1950s and Kingman is rightfully proud of him. If anyone knows the show <em>Wild Bill Hickok</em>, now's the moment.</li>
+      </ul>
+    </div>
+    <div class="prompt-box">
+      <h3>Discussion Prompts — Open Panel</h3>
+      <ol>
+        <li><em>Cars</em> brought Seligman's story to a global audience. Is that a good thing for preservation — or does it change what the place is? Does it become a theme park of itself?</li>
+        <li>Would anyone actually stay in the underground Cavern Suite? What's the appeal of deliberately putting yourself in a place that's that dark and that quiet?</li>
+        <li>Oatman is a living ghost town — people still live there, burros wander the streets, gunfights are staged for tourists. It occupies a strange space between real history and performance. What do you make of places like that?</li>
+      </ol>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Story 8. Cue: "We start our final six stories back in Williams, at a building that's been a saloon, a brothel, and a bed-and-breakfast — not necessarily in that order."</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 16 -->
+<div class="slide type-story" id="s16">
+  <div class="slide-header">
+    <div class="slide-num">16</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Story 8</div>
+      <h2>Red Garter Inn's Murdered Madam</h2>
+      <div class="location">Red Garter Inn, 137 W. Railroad Ave., Williams (built 1897)</div>
+    </div>
+    <div class="timing">~3–4 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="key-facts">
+      <h3>Key Facts</h3>
+      <ul>
+        <li>Williams was the last Route 66 town bypassed by I-40 — in 1984, Bobby Troup played "Get Your Kicks on Route 66" live at the ceremony closing the highway era</li>
+        <li>The Red Garter was a saloon and brothel; second floor housed the "ladies of the night" and their clients</li>
+        <li>Eva: a young woman in a white dressing gown, believed murdered in the building. Touches sleeping guests on the arm, shakes beds, opens and closes doors.</li>
+        <li>Also haunting: a man knifed on the main staircase; an old man who died by suicide within the walls</li>
+        <li>Now operates as a "Bed and Bakery" — the baked goods are reportedly extraordinary</li>
+      </ul>
+    </div>
+    <div class="talking-points">
+      <h3>Narrative Talking Points</h3>
+      <ul>
+        <li>The Williams farewell is worth a brief moment: 1984, Bobby Troup, the song that defined the road. There's a real melancholy to being the last town the highway gave up on — and then a real pride in the town that refused to accept the verdict.</li>
+        <li>Eva is the heart of this story — a young woman, likely murdered, still reaching out to sleeping guests. There's something particularly poignant about a spirit that touches rather than appears. Physical contact is harder to rationalize away.</li>
+        <li>The "Bed and Bakery" tag line is a gift — let the audience enjoy the contrast. Amazing scones served in a building where someone was knifed on the stairs. That's Route 66 in one sentence.</li>
+        <li>Keep the tone respectful around Eva — she was a real person in a very vulnerable position. The haunting is her story; honor that.</li>
+      </ul>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Story 9. Cue: "Going underground now — 21 stories below the desert, where the silence is total and the company is uncertain."</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 17 -->
+<div class="slide type-story" id="s17">
+  <div class="slide-header">
+    <div class="slide-num">17</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Story 9</div>
+      <h2>Grand Canyon Caverns' Restless Spirits</h2>
+      <div class="location">Grand Canyon Caverns, Mile 115, Peach Springs (Hualapai Nation)</div>
+    </div>
+    <div class="timing">~3–4 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="key-facts">
+      <h3>Key Facts</h3>
+      <ul>
+        <li>1927: Walter Peck stumbled in on his way to a poker game; mistook iron oxide for gold; pivoted to Route 66 tourism</li>
+        <li>Peck's tours featured skeletal remains of Hualapai people displayed as "cavemen" — sacred dead used as a carnival attraction</li>
+        <li>The remains were eventually removed, but the disturbance was done</li>
+        <li>Haunting: moaning echoes through limestone chambers; shadowy figures in peripheral vision; rocks thrown aggressively from the area where the skeletons were removed</li>
+        <li>Tour guides sometimes refuse to enter certain sections alone</li>
+        <li>You can book the underground suite and sleep 21 stories down in total darkness and complete silence</li>
+      </ul>
+    </div>
+    <div class="talking-points">
+      <h3>Narrative Talking Points</h3>
+      <ul>
+        <li>The Peck origin story is a great opener: a man literally stumbles into the most extraordinary discovery in the region and his first move is to fake it as a gold mine. Route 66 entrepreneurship at its finest — immediately followed by one of the road's worst decisions.</li>
+        <li>The treatment of Hualapai remains is a moment that deserves gravity. Acknowledge it clearly: this was a profound desecration of Indigenous dead for tourist profit. That's the context for everything that follows underground.</li>
+        <li>The thrown rocks detail is specifically located — the area where the skeletons were removed. That's a specific, consistent, physical phenomenon that's hard to explain away and easy to imagine standing in the dark underground.</li>
+        <li>The Cavern Suite is the perfect payoff for the audience: all those people who said yes to staying there? They're sleeping 21 stories down, in total silence, in a space where guides won't go alone. What could go wrong?</li>
+        <li><span class="debe-flag">✦ Debe</span> — has she investigated the caverns or spoken with guides about their experiences? Hualapai Nation context from a knowledgeable source is especially valuable here.</li>
+      </ul>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Story 10. Cue: "Up to Kingman now — where a love triangle in 1912 divided a building in half, and nobody could agree on whose side the hallway belonged to. Even now."</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 18 -->
+<div class="slide type-story" id="s18">
+  <div class="slide-header">
+    <div class="slide-num">18</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Story 10</div>
+      <h2>Hotel Brunswick's Love Triangle</h2>
+      <div class="location">Hotel Brunswick (now Mr. D'z Route 66 Diner), Kingman (built 1909)</div>
+    </div>
+    <div class="timing">~3–4 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="key-facts">
+      <h3>Key Facts</h3>
+      <ul>
+        <li>1909: Elegant hotel opens in Kingman, run by two business partners</li>
+        <li>1912: A woman comes between them — they build a wall straight down the center of the building, creating two entirely separate 25-room hotels under one roof</li>
+        <li>Each ran his half independently for decades in bitter, adjacent rivalry</li>
+        <li>In the 1960s the walls came down to convert the building to a diner. The spirits didn't get the memo.</li>
+        <li>Haunting: a little girl darting through shadows between tables; shadow figures walking through guests in the hallway; the feuding owners apparently still refusing to share their space peacefully</li>
+      </ul>
+    </div>
+    <div class="talking-points">
+      <h3>Narrative Talking Points</h3>
+      <ul>
+        <li>The premise here is almost comedic in the best way — two grown men so furious at each other that they physically split a building in half rather than settle their differences. Let the audience appreciate the absurdity before the haunting lands.</li>
+        <li>The little girl ghost is the most unusual element — her origin isn't explained by the known history of the building. She's a mystery within the mystery, darting between chrome diner stools and vintage decor.</li>
+        <li>The shadow figures walking through guests in the hallway is exactly the kind of detail that earns a great reaction in a live setting — that involuntary "oh, no" from an audience who imagines it happening to them.</li>
+        <li>The visual contrast is wonderful: a cheerful 1950s-style diner, red vinyl booths, neon, milkshakes — overlaid on a building still apparently divided by a century-old grudge. The owners outlasted themselves.</li>
+      </ul>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Story 11. Cue: "Down to Oatman now — a gold rush ghost town in the Black Mountains, where Clark Gable and Carole Lombard came for their honeymoon, and at least one of them never quite left."</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 19 -->
+<div class="slide type-story" id="s19">
+  <div class="slide-header">
+    <div class="slide-num">19</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Story 11</div>
+      <h2>Oatman Hotel's Hollywood Ghosts</h2>
+      <div class="location">Oatman Hotel, 181 Main Street, Oatman (built 1902, rebuilt 1920)</div>
+    </div>
+    <div class="timing">~3–4 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="key-facts">
+      <h3>Key Facts</h3>
+      <ul>
+        <li>Originally the Durlin Hotel; survived multiple fires; rebuilt 1920 — tougher than the miners who built it</li>
+        <li>1939: Clark Gable and Carole Lombard married in Kingman and honeymooned here; the room is now preserved as a museum</li>
+        <li>Clark and Carole: staff and guests hear whispering and laughter from the honeymoon suite; the couple apparently still reliving their night together</li>
+        <li>The Theater Room Museum: distinct outlines of sleeping bodies appear on the beds, belonging to no one visible</li>
+        <li>"Oatie": an Irish miner whose ghost drifts through the hotel, sometimes accompanied by faint bagpipes</li>
+        <li>Outside: wild burros wander past the front door — descendants of the miners' animals, still working the town</li>
+      </ul>
+    </div>
+    <div class="talking-points">
+      <h3>Narrative Talking Points</h3>
+      <ul>
+        <li>Perfect for a fan convention audience: Clark Gable and Carole Lombard are cinema royalty. Their honeymoon story is genuinely romantic, and the haunting it left behind is tender rather than frightening.</li>
+        <li>Carole Lombard died in a plane crash in 1942, just three years after the honeymoon. Gable was reportedly devastated for the rest of his life. Framing the haunting through that loss adds real emotional weight — they may be reliving the night because it was one of the happiest they had.</li>
+        <li>"Oatie" and his bagpipes is a crowd-pleasing detail — an Irish miner in the Arizona desert, drifting through the building with the faint sound of pipes. It's oddly specific and genuinely evocative.</li>
+        <li>The sleeping body outlines in the museum beds are one of the stranger, more viscerally unsettling details in the whole presentation. Bodies that leave impressions but belong to no one.</li>
+        <li>The burros outside complete the picture — Oatman is a place where the past hasn't left, human or animal.</li>
+      </ul>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Story 12. Cue: "Back up the mountain and east toward Kingman — to a silver mine, a murder, and a ghost town that keeps its dead close."</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 20 -->
+<div class="slide type-story" id="s20">
+  <div class="slide-header">
+    <div class="slide-num">20</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Story 12</div>
+      <h2>The Hackberry Mine Murders</h2>
+      <div class="location">Hackberry, between Kingman and Seligman</div>
+    </div>
+    <div class="timing">~3–4 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="key-facts">
+      <h3>Key Facts</h3>
+      <ul>
+        <li>1875: Jim Music discovered a rich silver vein in the Hualapai Mountains, naming the claim after a nearby hackberry tree — nearly $3 million produced over four decades</li>
+        <li>Circa 1910: a stranger was lured into the mountains by tales of a lost mine, then murdered — body buried, evidence burned; victim never identified</li>
+        <li>Haunting: unexplained lights moving through the hills at night; the sound of pickaxes striking rock with no one there; the apparition of a desperate man stumbling through the desert scrub, forever searching</li>
+        <li>The abandoned Hackberry Elementary School (closed 1990s): locals report hearing children laughing from inside the locked and fenced building on still nights</li>
+        <li>Six generations of the Grigg family buried in Hackberry cemetery, alongside unknown prospectors marked only by piles of stones</li>
+      </ul>
+    </div>
+    <div class="talking-points">
+      <h3>Narrative Talking Points</h3>
+      <ul>
+        <li>Hackberry is a ghost town that refuses the label — people still live there, the General Store still operates, but most of the town is quiet. That half-life quality is what makes it atmospheric.</li>
+        <li>The murdered stranger is the story's emotional engine: a man nobody knew, killed for a mine that may not have existed, buried somewhere in the desert. He has no name. He has no grave marker. He just keeps looking.</li>
+        <li>The elementary school children are a tonal counterpoint — innocent, inexplicable, and deeply unsettling in the way that children laughing in a locked abandoned building always is.</li>
+        <li>The "piles of stones" graves in the cemetery are a quietly powerful image — all that's left of lives that didn't get documented. The mine produced millions. The men who worked it sometimes didn't even get a name on a stone.</li>
+      </ul>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to Story 13 — the final story. Cue: "And then there's the last ghost of Route 66. Not tied to any building. Not stuck in any room. The one that haunts the road itself."</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 21 -->
+<div class="slide type-story" id="s21">
+  <div class="slide-header">
+    <div class="slide-num">21</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Story 13 — Final Story</div>
+      <h2>Route 66's Phantom Hitchhikers</h2>
+      <div class="location">The Entire Arizona Stretch</div>
+    </div>
+    <div class="timing">~4–5 min</div>
+  </div>
+  <div class="slide-body">
+    <div class="key-facts">
+      <h3>Key Facts</h3>
+      <ul>
+        <li>For nearly 100 years and 2,448 miles, Route 66 carried millions of travelers — many never completed the journey</li>
+        <li>Drivers report hitchhikers in period clothing (1930s–60s) who vanish mid-conversation or disappear from the back seat</li>
+        <li>Gas station attendants dead for decades seen helping modern travelers — then fading away</li>
+        <li>Vintage cars appear in rearview mirrors and vanish; the smell of old motor oil and cigarettes with no source; 1950s music from an abandoned station</li>
+        <li><span class="debe-flag">✦ Debe</span>: "This was the most exciting trip they'd ever taken. They just want to go back and relive it."</li>
+        <li>They are not malicious. They are not lost. They are exactly where they want to be.</li>
+      </ul>
+    </div>
+    <div class="talking-points">
+      <h3>Narrative Talking Points</h3>
+      <ul>
+        <li>Save this one for emotional resonance — it's deliberately placed last because it reframes all 12 stories before it. The hitchhikers aren't a new phenomenon; they're the conclusion of the argument the whole presentation has been making.</li>
+        <li>Debe's quote is the emotional capstone: "They just want to go back and relive it." That's not horror. That's nostalgia. That's love for a road and a time and a way of traveling that no longer exists.</li>
+        <li>The specificity of the phenomena here is striking: period clothing, vintage cars in rearview mirrors, the smell of motor oil and cigarettes. These are ghosts of an era as much as they are of individual people.</li>
+        <li>Land on the final line and let it breathe: "They are not malicious. They are not lost. They are exactly where they want to be." That's the note to close on before the Closing slide.</li>
+        <li><span class="debe-flag">✦ Debe</span> — her quote is on the slide. Invite her to expand on it if she'd like. This is her closing moment in the presentation.</li>
+      </ul>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>Advance to the Closing slide. Pause briefly before speaking — let the silence land after "exactly where they want to be."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CLOSING
+══════════════════════════════════════════════════════════════ -->
+<hr class="section-divider">
+<div class="section-label">Closing</div>
+
+<!-- SLIDE 22 -->
+<div class="slide type-closing" id="s22">
+  <div class="slide-header">
+    <div class="slide-num">22</div>
+    <div class="slide-meta">
+      <div class="slide-type-tag">Closing Slide</div>
+      <h2>The Road Never Ends</h2>
+    </div>
+    <div class="timing">~5 min + Q&amp;A</div>
+  </div>
+  <div class="slide-body">
+    <div class="note-section">
+      <h3>Closing Context</h3>
+      <p>The slide text does the heavy lifting here — "a corridor between worlds, where the past refuses to stay buried." Let the image and the words breathe. Then bring the room back to the present.</p>
+    </div>
+    <div class="talking-points">
+      <h3>Talking Points</h3>
+      <ul>
+        <li>Brief panel reflection — one sentence each from each panelist: the story or location that stayed with them most. Keep it tight.</li>
+        <li>Thank Debe specifically for the investigation notes, the fieldwork, and the book that underpins so much of tonight's research. Direct the audience to <em>Arizona's Haunted Route 66</em> if they want to go deeper.</li>
+        <li>Invite the audience to drive the road if they haven't. It's still there. Some of them are still on it.</li>
+        <li>Acknowledge the audience: they came to a paranormal Route 66 panel at a fan convention at 10am (or whatever time it is) — these are our people.</li>
+        <li>Open Q&amp;A: moderate questions from the room. If Debe is fielding investigator questions, give her that space. If panelists want to add stories that didn't make the 13, now's the moment.</li>
+        <li>Hard stop cue: watch the room for the convention time warning. Thank the audience, mention Debe's book one last time, and send them off.</li>
+      </ul>
+    </div>
+    <div class="prompt-box">
+      <h3>Possible Q&amp;A Talking Points to Have Ready</h3>
+      <ol>
+        <li>Which location in the research didn't make the final 13 that you most wish had? (Panelists can pull from the full 38-location research document.)</li>
+        <li>What's the most convincing piece of evidence for paranormal activity on Route 66 that Debe has personally encountered?</li>
+        <li>If you could spend the night anywhere on Arizona's Route 66 — any of the 13 locations — which would you choose?</li>
+        <li>Is there a Route 66 ghost story from another state that competes with Arizona's for strangeness or darkness?</li>
+      </ol>
+      <div class="prompt-note">These are fallback prompts if audience Q&amp;A is slow to start. Lead with the audience first.</div>
+    </div>
+    <div class="transition-cue">
+      <div class="arrow">▶</div>
+      <div>End of presentation. Safe travels on the Mother Road.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══════════════════════════════════════════════════ -->
+<div class="doc-footer">
+  <p>Haunted Route 66 — Presenter Notes &nbsp;·&nbsp; Phoenix Fan Fusion 2026</p>
+  <p style="margin-top:0.3rem;">Stories sourced from <em>Arizona's Haunted Route 66</em> by Debe Branning &nbsp;·&nbsp; Based on <em>Spooky66_Presentation_Outline_v2.md</em></p>
+</div>
+
+</body>
+</html>
