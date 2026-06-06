@@ -27,6 +27,7 @@ const sorted  = stories.sort((a, b) => a.data.order - b.data.order);
         <a href="/stories/" class="btn-primary">Explore the Stories</a>
         <a href="/map/"     class="btn-secondary">See the Map</a>
         <a href="/spooky-route-66-presentation.pdf" download class="btn-secondary">Download PDF</a>
+        <a href="/Spooky66_PresenterNotes_Full.html" target="_blank" rel="noopener noreferrer" class="btn-outline">Presenter Notes</a>
       </div>
       <p class="hero-event">
         Sat June 6, 2026 &bull; 12–1 PM &bull; Room North 128AB Horror &bull;
@@ -56,6 +57,35 @@ const sorted  = stories.sort((a, b) => a.data.order - b.data.order);
             tags={story.data.tags}
           />
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Book Feature ─────────────────────────────────────── -->
+  <section class="book-section">
+    <div class="container book-inner">
+      <img
+        src="/Arizonas_Haunted_Route_66_Debe_Branning_Cover.jpg"
+        alt="Arizona's Haunted Route 66 by Debe Branning — book cover"
+        class="book-cover"
+      />
+      <div class="book-text">
+        <p class="book-label">FURTHER READING</p>
+        <h2>Arizona's Haunted Route 66</h2>
+        <p class="book-author">by Debe Branning</p>
+        <p>
+          Our own Debe Branning — paranormal historian and founder of the MVD Ghostchasers —
+          wrote the book on this stretch of road. Literally. Her deep dive into nearly
+          four hundred miles of legends, murders, and restless spirits is the foundation
+          much of this presentation was built on. If the stories here left you wanting more,
+          this is your next read.
+        </p>
+        <a
+          href="https://a.co/d/06xH8U0H"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-outline"
+        >Get the Book</a>
       </div>
     </div>
   </section>
@@ -195,6 +225,61 @@ const sorted  = stories.sort((a, b) => a.data.order - b.data.order);
 
   @media (max-width: 900px) { .story-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 560px) { .story-grid { grid-template-columns: 1fr; } }
+
+  /* ── Book Feature ── */
+  .book-section {
+    padding: var(--space-xl) 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .book-inner {
+    display: flex;
+    gap: var(--space-lg);
+    align-items: center;
+  }
+
+  .book-cover {
+    width: 200px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  }
+
+  .book-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .book-label {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: var(--color-accent-amber);
+    margin: 0;
+  }
+
+  .book-text h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin: 0;
+  }
+
+  .book-author {
+    font-style: italic;
+    color: var(--color-accent-amber);
+    margin: 0;
+  }
+
+  .book-text p:not(.book-label):not(.book-author) {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .book-inner { flex-direction: column; }
+    .book-cover { width: 160px; align-self: center; }
+  }
 
   /* ── CTAs ── */
   .cta-section {
